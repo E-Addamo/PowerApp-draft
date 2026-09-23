@@ -66,10 +66,12 @@ public class Parser {
                 Heir newHeir = new Heir(name.getValue(), surname.getValue(), cf.getValue(), iban.getValue(), shareFloat);
                 heirList.add(newHeir);
             }
-            else{
-                throw new FileFormatException("Invalid key in heirs file");
+
+            //se le keys non corrispondono, significa necessariamente che il file è finito, dunque le keys devono essere tutte vuote.
+            else if(!(name.isEmpty() && surname.isEmpty() && cf.isEmpty() && iban.isEmpty() && share.isEmpty())){
+                throw new FileFormatException("Invalid heirs file format.");
             }
-        }while(!name.getKey().equals("") && !name.getValue().equals(""));
+        }while(!name.isEmpty());
 
         scanner.close();
 

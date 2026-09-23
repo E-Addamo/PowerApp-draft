@@ -1,0 +1,17 @@
+Nome: Mario
+Cognome: Rossi
+Codice fiscale: AAAAAAAAAAAAAAAA
+IBAN: IBANIBANIBANIBANIBANIBANAAA
+Quota: 12
+
+Nome: Giacomo
+Cognome: Poretti
+Codice fiscale: BBBBBBBBBBBBBBBB    
+IBAN: IBANIBANIBANIBANIBANIBANBBB
+Quota: 0.3
+
+Nome: Francesco
+Cognome: Totti
+Codice fiscale: CCCCCCCCCCCCCCCC
+IBAN: IBANIBANIBANIBANIBANIBANCCC
+Quota: 0.1

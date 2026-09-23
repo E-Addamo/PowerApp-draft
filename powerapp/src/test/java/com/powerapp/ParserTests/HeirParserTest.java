@@ -1,6 +1,8 @@
 package com.powerapp.ParserTests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -48,4 +50,61 @@ public class HeirParserTest {
         parser.parseHeirs(dir + "HeirParserTestCase3.txt"); 
     }
 
+    @Test(expected = FileNotFoundException.class)
+    public void badLocation() throws InvalidHeirException, FileNotFoundException, FileFormatException{
+        Parser parser = new Parser();
+        parser.parseHeirs(dir + "AAAHeirParserTestCase.txt");
+    }
+
+    @Test
+    public void badCf() throws FileNotFoundException, FileFormatException{
+        boolean exception = false;
+        Parser parser = new Parser();
+        try{
+            parser.parseHeirs(dir + "HeirParserTestCase4.txt");
+        }catch(InvalidHeirException e){
+            assertEquals(e.getMessage(), "Invalid cf format");
+            exception = true;
+        }
+        assertTrue(exception);
+    }
+
+    @Test
+    public void badIban() throws FileNotFoundException, FileFormatException{
+        boolean exception = false;
+        Parser parser = new Parser();
+        try{
+            parser.parseHeirs(dir + "HeirParserTestCase5.txt");
+        }catch(InvalidHeirException e){
+            assertEquals(e.getMessage(), "Invalid IBAN format");
+            exception = true;
+        }
+        assertTrue(exception);
+    }
+
+    @Test
+    public void shareGreaterThan1() throws FileNotFoundException, FileFormatException{
+        boolean exception = false;
+        Parser parser = new Parser();
+        try{
+            parser.parseHeirs(dir + "HeirParserTestCase6.txt");
+        }catch(InvalidHeirException e){
+            assertEquals(e.getMessage(), "Heir's share must be between 0 and 1");
+            exception = true;
+        }
+        assertTrue(exception);
+    }
+
+    @Test
+    public void negativeShare() throws FileNotFoundException, FileFormatException{
+        boolean exception = false;
+        Parser parser = new Parser();
+        try{
+            parser.parseHeirs(dir + "HeirParserTestCase7.txt");
+        }catch(InvalidHeirException e){
+            assertEquals(e.getMessage(), "Heir's share must be between 0 and 1");
+            exception = true;
+        }
+        assertTrue(exception);
+    }
 }
