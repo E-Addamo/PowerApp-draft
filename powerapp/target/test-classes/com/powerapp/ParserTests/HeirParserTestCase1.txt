@@ -1,0 +1,5 @@
+Nome: Mario
+Cognome: Rossi
+Codice fiscale: AAAAAAAAAAAAAAAA
+IBAN: IBANIBANIBANIBANIBANIBANAAA
+Quota: 0.5
