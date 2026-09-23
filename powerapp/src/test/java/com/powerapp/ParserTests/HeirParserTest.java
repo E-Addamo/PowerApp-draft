@@ -1,18 +1,16 @@
 package com.powerapp.ParserTests;
 
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+import java.util.ArrayList;
+
 import com.powerapp.Parser;
 import com.powerapp.Heir;
+
 import com.powerapp.InvalidHeirException;
 import com.powerapp.FileFormatException;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertNotNull;
-
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import org.junit.Test;
 
 public class HeirParserTest {
 
@@ -47,7 +45,7 @@ public class HeirParserTest {
     @Test(expected = FileFormatException.class)
     public void badFormat() throws InvalidHeirException, FileNotFoundException, FileFormatException{
         Parser parser = new Parser();
-        ArrayList<Heir> heirList = parser.parseHeirs(dir + "HeirParserTestCase3.txt"); 
+        parser.parseHeirs(dir + "HeirParserTestCase3.txt"); 
     }
 
 }

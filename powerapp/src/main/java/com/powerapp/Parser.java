@@ -67,13 +67,35 @@ public class Parser {
                 heirList.add(newHeir);
             }
             else{
-                throw new FileFormatException("Invalid key in input file");
+                throw new FileFormatException("Invalid key in heirs file");
             }
         }while(!name.getKey().equals("") && !name.getValue().equals(""));
 
         scanner.close();
 
         return heirList;
+    }
+
+    public ArrayList<SubFund> parseSubFunds(String path) throws FileNotFoundException, FileFormatException, InvalidSubFundException{
+        File txtFile = new File(path);
+        ArrayList<SubFund> subFundList = new ArrayList<>();
+
+        Scanner scanner = new Scanner(txtFile);
+        KeyValue isin;
+        do{
+            isin = getNextKeyValue(scanner);
+            KeyValue shares = getNextKeyValue(scanner);
+
+            if(isin.getKey().equalsIgnoreCase("ISIN") &&
+                shares.getKey().equalsIgnoreCase("Quote")){
+                float sharesFloat = Float.parseFloat(shares.getValue());
+                SubFund subfund = new SubFund(isin.getValue(), sharesFloat);
+                subFundList.add(subfund);
+            }
+        }while(!isin.getKey().equals("") && !isin.getValue().equals(""));
+
+        return subFundList;
+
     }
 
 }
