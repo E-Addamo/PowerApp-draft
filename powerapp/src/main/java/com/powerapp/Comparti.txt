@@ -1,0 +1,5 @@
+isin: AAAAAAAAAAAA
+quote: 30
+
+isin: ABABABABABAB
+quote: 60
